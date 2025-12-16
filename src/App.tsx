@@ -1,7 +1,8 @@
-import {useState} from 'react'
+import {useEffect, useRef, useState} from 'react'
 import rehabLogo from '/project_rehab.svg'
 import './App.css'
 import ConsoleType from "./components/ConsoleType.tsx";
+import {flushSync} from "react-dom";
 
 const prisoner_id = Math.floor(Math.random() * 1000000) + 1
 
@@ -11,6 +12,8 @@ function App() {
     const [elig_disable, set_elig_disable]  = useState(false)
     const [elig_finish, set_elig_finish]  = useState(false)
     const [submit_finish, set_submit_finish]  = useState(false)
+
+    const ref = useRef<HTMLDivElement>(null)
 
     const secondParagraph = <ConsoleType text={[
         "It doesn't matter what you believe. What matters is our lack of data.",
@@ -25,6 +28,16 @@ function App() {
     const thirdParagraph = <ConsoleType text={[
         "Due to your LANCER piloting experience, you are eligible to participate in the experiment PROJECT: REHAB."
     ]} charDelay={25} onFinish={()=>{set_submit_finish(true);}}/>
+
+    useEffect(() => {
+        setTimeout(()=>{
+            flushSync(() => {
+                if(ref.current !== null) {
+                    ref.current.scrollIntoView();
+                }
+            })
+        }, 1);
+    }, [yn_disable, yn_finish, elig_disable, elig_finish, submit_finish]);
 
     return (
         <>
@@ -59,6 +72,7 @@ function App() {
                     <a href="https://forms.gle/v38eSFoLhv6be9mu7">SUBMIT APPLICATION</a>
                 </button>
             </div> : <div></div>}
+            <div className="scroll-footer" ref={ref}></div>
         </>
     )
 }

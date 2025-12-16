@@ -36,6 +36,21 @@ body {
     filter: drop-shadow(0 0 2em rgba(103, 255, 100, 0.67));
 }
 
+@keyframes console-typing {
+    from {
+        background-color: #9cdb43;
+    }
+    to {
+        background-color: transparent;
+    }
+}
+
+.scroll-footer {
+    width: 0.5em;
+    height: 1em;
+    animation: console-typing 0.7s infinite ease-in-out;
+}
+
 button {
     padding: 0.5em 1em 0.5em 1em;
     border: none;
@@ -80,10 +95,6 @@ button:disabled {
     to {
         opacity: 1;
     }
-}
-
-@keyframes console-typing {
-    
 }
 
 .anim-fade-in {
