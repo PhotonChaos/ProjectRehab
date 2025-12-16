@@ -23,8 +23,7 @@ function App() {
     ]} charDelay={25} onFinish={()=>{set_elig_finish(true);}}/>
 
     const thirdParagraph = <ConsoleType text={[
-        "Due to your LANCER piloting experience, you are eligible to participate in the experiment PROJECT: REHAB.",
-        "Submit your application"
+        "Due to your LANCER piloting experience, you are eligible to participate in the experiment PROJECT: REHAB."
     ]} charDelay={25} onFinish={()=>{set_submit_finish(true);}}/>
 
     return (
